@@ -6,7 +6,8 @@ class Post < ActiveRecord::Base
   validate :post_must_be_clickbait
 
   def post_must_be_clickbait
-    if title.none?(["Won't Believe", "Secret", "Top", "Guess"])
+    clickbait = ["Won't Believe", "Secret", "Top", "Guess"]
+    if title.none?([
       error.add(:title, "title must be clickbait")
     end
   end
